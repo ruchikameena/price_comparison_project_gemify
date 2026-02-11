@@ -1,13 +1,14 @@
 import { useState } from "react";
 import axios from "axios";
 import "../styles/Chatbot.css";
+import bot from "../assets/bot.png";
 
 const Chatbot = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState([
-    { sender: "bot", text: "Hello 👋! How can I help you today?" },
-  ]);
+    { sender: "bot", text: "Hello 👋! How can I help you?" },
+]);
 
   const sendMessage = async () => {
     if (!message.trim()) return;
@@ -28,7 +29,7 @@ const Chatbot = () => {
       console.error("Error sending message:", err);
       setMessages([
         ...newMessages,
-        { sender: "bot", text: "❌ Sorry, server not responding." },
+        { sender: "bot", text: "❌ Sorry, server not responding..." },
       ]);
     }
   };
@@ -37,7 +38,7 @@ const Chatbot = () => {
     <div className="chatbot-container">
       <div className="chatbot-icon" onClick={() => setIsOpen(!isOpen)}>
         <img
-          src="https://cdn-icons-png.flaticon.com/512/4712/4712109.png"
+          src={bot}
           alt="chatbot"
         />
       </div>
@@ -49,9 +50,6 @@ const Chatbot = () => {
             <button
               onClick={() => {
                 setIsOpen(false);
-                setMessages([
-                  { sender: "bot", text: "Hello 👋! How can I help you today?" },
-                ]);
               }}
             >
               ✖

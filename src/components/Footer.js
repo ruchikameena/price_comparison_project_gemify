@@ -6,7 +6,7 @@ import {
   FaLinkedin,
 } from "react-icons/fa";
 import "../styles/Footer.css";
-
+import logo from "../assets/logo.png"
 const Footer = () => {
   const navigate = useNavigate();
 
@@ -18,10 +18,9 @@ const Footer = () => {
 
   return (
     <footer className="footer">
-      <div className="footer-section logo-section">
-        <h2 className="footer-logo">Gemify</h2>
+      <div className="logo-section">
         <img
-          src="/logo192.png"
+          src={logo}
           alt="Gemify Logo"
           className="footer-img"
         />
@@ -45,7 +44,7 @@ const Footer = () => {
           <li onClick={() => goToCategory("grocery")}>Grocery</li>
           <li onClick={() => goToCategory("clothing")}>Cloths</li>
           <li onClick={() => goToCategory("medical")}>Medical</li>
-          <li onClick={() => goToCategory("furniture")}>See More</li>
+          <li onClick={() => goToCategory(" ")}>See More</li>
         </ul>
       </div>
 
@@ -57,7 +56,7 @@ const Footer = () => {
           <li onClick={() => goToCategory("samsung")}>Samsung</li>
           <li onClick={() => goToCategory("nike")}>Nike</li>
           <li onClick={() => goToCategory("gucci")}>Gucci</li>
-          <li onClick={() => goToCategory("brand")}>See More</li>
+          <li onClick={() => goToCategory(" ")}>See More</li>
         </ul>
       </div>
 
