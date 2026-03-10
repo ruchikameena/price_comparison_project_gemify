@@ -71,8 +71,8 @@ const Navbar = () => {
             <>
               <Link to="/" onClick={() => setOpen(false)}>Home</Link>
               <Link to="/products" onClick={() => setOpen(false)}>Products</Link>
-              <Link to="/compare" onClick={() => setOpen(false)}>Compare</Link>
               <Link to="/about-us" onClick={() => setOpen(false)}>About Us</Link>
+              
             </>
           )}
         </div>
@@ -94,7 +94,6 @@ const Navbar = () => {
                   <div className="mobile-links">
                     <Link to="/" onClick={() => setOpen(false)}>Home</Link>
                     <Link to="/products" onClick={() => setOpen(false)}>Products</Link>
-                    <Link to="/compare" onClick={() => setOpen(false)}>Compare</Link>
                     <Link to="/about-us" onClick={() => setOpen(false)}>About Us</Link>
                   </div>
 

@@ -1,35 +1,40 @@
 import { useState, useEffect } from "react";
-import { useNavigate, useLocation } from "react-router-dom"; // 👈 added useLocation
+import { useNavigate, useLocation } from "react-router-dom";
+import ProductCard from "../components/ProductCard";
 import "../styles/Products.css";
 
 const Products = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState("");
-  const navigate = useNavigate();
-  const location = useLocation(); 
 
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  // Home se category aaye toh search box fill karo
   useEffect(() => {
-    // agar home se category ayi hai toh usko search box me daal do
     if (location.state?.category) {
       setSearchTerm(location.state.category.toLowerCase());
     }
   }, [location.state]);
 
+  // Fetch Products
   useEffect(() => {
     const fetchData = async () => {
       try {
         const apiList = [
-          { url: "https://fakestoreapi.com/products", source: "FakeStore" },
-          { url: "https://dummyjson.com/products", source: "DummyJSON" },
+          { url: "https://fakestoreapi.com/products", source: "GEM" },
+          { url: "https://dummyjson.com/products", source: "Amazon" },
           {
-            url: "https://dummyjson.com/products/category/smartphones",
-            source: "ElectronicsAPI",
+            url: "https://api.escuelajs.co/api/v1/products",
+            source: "Flipkart",
           },
         ];
 
         const results = await Promise.allSettled(
-          apiList.map((api) => fetch(api.url).then((res) => res.json()))
+          apiList.map((api) =>
+            fetch(api.url).then((res) => res.json())
+          )
         );
 
         const dataSets = results
@@ -43,27 +48,26 @@ const Products = () => {
         let combined = [];
 
         dataSets.forEach(({ source, data }) => {
-          const products =
-            source === "FakeStore"
-              ? data
-              : data.products || [];
+          const products = Array.isArray(data) ? data : data.products || [];
 
-          combined.push(
-            ...products.map((p) => ({
-              id: `${source}-${p.id}`,
-              title: p.title,
-              price: p.price,
-              image: p.image || p.thumbnail,
-              category: p.category,
-              description: p.description,
-              source,
-            }))
-          );
+combined.push(
+  ...products.map((p) => ({
+    id: `${source}-${p.id}`,
+    title: p.title,
+    price: p.price,
+    image: p.image || p.thumbnail || p.images?.[0],
+    category: p.category?.name || p.category,
+    description: p.description,
+    source,
+  }))
+);
         });
 
+        // Remove duplicates
         const seen = new Set();
         const unique = combined.filter((p) => {
-          if (!p.title || seen.has(p.title.toLowerCase())) return false;
+          if (!p.title || seen.has(p.title.toLowerCase()))
+            return false;
           seen.add(p.title.toLowerCase());
           return true;
         });
@@ -79,9 +83,10 @@ const Products = () => {
     fetchData();
   }, []);
 
-  const filteredProducts = products.filter((p) =>
-    p.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    p.category.toLowerCase().includes(searchTerm.toLowerCase())
+  const filteredProducts = products.filter(
+    (p) =>
+      p.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      p.category.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   const handleCompare = (product) => {
@@ -90,8 +95,6 @@ const Products = () => {
 
   return (
     <div className="page-container">
-      <h1 className="heading">🛍️ Product Explorer</h1>
-
       <div className="search-container">
         <input
           type="text"
@@ -101,7 +104,10 @@ const Products = () => {
           className="search-input"
         />
         {searchTerm && (
-          <button onClick={() => setSearchTerm("")} className="clear-btn">
+          <button
+            onClick={() => setSearchTerm("")}
+            className="clear-btn"
+          >
             ✖
           </button>
         )}
@@ -113,34 +119,11 @@ const Products = () => {
         <div className="product-grid">
           {filteredProducts.length > 0 ? (
             filteredProducts.map((p) => (
-              <div
+              <ProductCard
                 key={p.id}
-                className={`product-card ${
-                  p.source === "FakeStore"
-                    ? "card-blue1"
-                    : p.source === "DummyJSON"
-                    ? "card-blue2"
-                    : "card-blue3"
-                }`}
-              >
-                <img
-                  src={
-                    p.image ||
-                    "https://via.placeholder.com/150/1E90FF/FFFFFF?text=No+Image"
-                  }
-                  alt={p.title}
-                  className="product-image"
-                />
-                <p className="product-name">{p.title}</p>
-                <p className="product-price">₹{p.price}</p>
-                <span className="product-tag">{p.source}</span>
-                <button
-                  className="compare-btn"
-                  onClick={() => handleCompare(p)}
-                >
-                  Compare
-                </button>
-              </div>
+                product={p}
+                onCompare={handleCompare}
+              />
             ))
           ) : (
             <p className="no-items">No items found</p>

@@ -208,7 +208,7 @@ const Home = () => {
       {showPopup && (
         <div className="popup-overlay">
           <div className="popup-box">
-            <h3>⚠️ Access Denied</h3>
+            <h3>Access Denied</h3>
             <p>You must login first to view products.</p>
             <div className="popup-actions">
               <button onClick={() => setShowPopup(false)}>Close</button>

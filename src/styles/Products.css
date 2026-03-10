@@ -17,7 +17,7 @@
   position: relative;
   width: 90%;
   max-width: 600px;
-  margin-bottom: 25px;
+  margin: 30px;
 }
 
 .search-input {
@@ -33,14 +33,6 @@
 .search-input:focus {
   border-color: #4a63ff;
   box-shadow: 0 0 6px rgba(66, 99, 235, 0.3);
-}
-
-.search-icon {
-  position: absolute;
-  right: 40px;
-  top: 10px;
-  font-size: 18px;
-  color: #4a63ff;
 }
 
 .clear-btn {
@@ -65,7 +57,6 @@
   border-radius: 15px;
   padding: 15px;
   text-align: center;
-  color: white;
   transition: transform 0.25s ease, box-shadow 0.25s ease;
   position: relative;
 }
@@ -73,19 +64,35 @@
 .product-card:hover {
   transform: scale(1.04);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  /* cursor: pointer; */
 }
 
 .product-image {
   height: 140px;
+  background-color: white;
   width: 100%;
   object-fit: contain;
-  margin-bottom: 10px;
 }
 
 .product-name {
   font-size: 15px;
-  margin-bottom: 8px;
+  color: white;
+  height: 100px;
   font-weight: 500;
+  display: flex;
+  align-items: center;     /* vertical center */
+  justify-content: center; /* horizontal center */
+  text-align: center;      /* multiline ke liye */
+  border-top: 1px solid black;
+  border-bottom: 1px solid white;
+  border-radius: 0 20px 0;
+  transition: 0.5s all ease-in-out;
+  
+}
+
+.product-name:hover{
+  background-color: white;
+  color: black;
 }
 
 .product-price {
@@ -94,24 +101,37 @@
 }
 
 /* Different blue tones to identify products from different websites. */
-.card-blue1 {
+/* .card-blue1 {
   background: linear-gradient(145deg, #3b82f6, #2563eb);
-}
-.card-blue2 {
+} */
+.card-blue {
   background: linear-gradient(145deg, #84aee2, #1d4ed8);
 }
-.card-blue3 {
+/* .card-blue3 {
   background: linear-gradient(145deg, #384d66, #2563eb);
-}
+} */
 
 .product-tag {
   position: absolute;
   top: 10px;
   right: 10px;
-  background: rgba(255, 255, 255, 0.25);
+  color: white;
+  background: rgba(15, 15, 15);
   padding: 4px 8px;
   border-radius: 8px;
   font-size: 12px;
+}
+
+.compare-btn{
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+}
+
+.compare-btn:hover{
+  cursor: pointer;
+  box-shadow: 5px 5px 10px black;
 }
 
 @media (max-width: 768px) {

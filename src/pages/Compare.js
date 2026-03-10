@@ -138,7 +138,6 @@ const Compare = () => {
   return (
     <div className="compare-container">
       <h2 className="compare-heading">
-        🧾 Comparing: {product ? product.title : query}
       </h2>
 
       {/* Selected Product Info */}
@@ -156,11 +155,9 @@ const Compare = () => {
           <div className="right">
             <h3>{product.title}</h3>
             <p className="desc">{product.description}</p>
-            <ul>
-              <li><b>Category:</b> {product.category}</li>
-              <li><b>Base Price:</b> ₹{product.price}</li>
-              <li><b>Source:</b> {product.source}</li>
-            </ul>
+            <b>Category:</b> {product.category}<br/><br/>
+            <b>Base Price:</b> ₹{product.price}<br/><br/>
+            <b>Source:</b> {product.source}
           </div>
         </div>
       ) : (
@@ -174,6 +171,7 @@ const Compare = () => {
           <Bar data={chartData} options={options} />
         </div>
       </div>
+      <p>will list the product cards here which are mention in the chart</p>
     </div>
   );
 };
