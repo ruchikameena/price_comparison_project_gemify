@@ -11,14 +11,12 @@ const Products = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  // Home se category aaye toh search box fill karo
   useEffect(() => {
     if (location.state?.category) {
       setSearchTerm(location.state.category.toLowerCase());
     }
   }, [location.state]);
-
-  // Fetch Products
+  // this needed to be changed with product API
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -63,7 +61,7 @@ combined.push(
 );
         });
 
-        // Remove duplicates
+        // Remove duplicates products
         const seen = new Set();
         const unique = combined.filter((p) => {
           if (!p.title || seen.has(p.title.toLowerCase()))

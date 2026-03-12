@@ -15,7 +15,7 @@ ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip, Legend);
 
 const Compare = () => {
   const { state } = useLocation();
-  const query = state?.query; // product.title se aa raha hai
+  const query = state?.query; // data is fetched using product title
   const [product, setProduct] = useState(null);
   const [compareData, setCompareData] = useState([]);
 
@@ -89,7 +89,6 @@ const Compare = () => {
         console.error("Error fetching product comparison:", err);
       }
     };
-    //additional we can add the recomended products also after the chart for easy navigation
     if (query) fetchProductDetails();
   }, [query]);
 
@@ -140,7 +139,6 @@ const Compare = () => {
       <h2 className="compare-heading">
       </h2>
 
-      {/* Selected Product Info */}
       {product ? (
         <div className="top-section">
           <div className="left">
@@ -164,7 +162,6 @@ const Compare = () => {
         <p className="loading">Fetching product details...</p>
       )}
 
-      {/* Price Comparison Chart */}
       <div className="bottom-section">
         <h3>Price Comparison Across Platforms</h3>
         <div className="chart-container">

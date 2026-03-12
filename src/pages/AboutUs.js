@@ -150,14 +150,14 @@ const AboutUs = () => {
       <img src="https://cdn.prod.website-files.com/605c9e03d6553a5d82976ce2/662fff59439091ed0007ab3a_1*doAg1_fMQKWFoub-6gwUiQ.png" />
       <img src="https://www.chartjs.org/media/logo-title.svg" />
       <img src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/flask-logo-icon.png" />
-      {/* Duplicate for seamless effect */}
+      {/* Duplicate once for seamless effect */}
       <img src="https://canducci.gallerycdn.vsassets.io/extensions/canducci/create-reactjs-components/1.2.3/1600731009124/Microsoft.VisualStudio.Services.Icons.Default" />
       <img src="https://www.gstatic.com/devrel-devsite/prod/v0aaaacbf0fa1137eef038c28cbf068bb36f5d76d975ff92c1063f1fc9a424af3/firebase/images/touchicon-180.png" />
       <img src="https://www.edureka.co/blog/wp-content/uploads/2019/08/node-logo.png" />
       <img src="https://cdn.prod.website-files.com/605c9e03d6553a5d82976ce2/662fff59439091ed0007ab3a_1*doAg1_fMQKWFoub-6gwUiQ.png" />
       <img src="https://www.chartjs.org/media/logo-title.svg" />
       <img src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/flask-logo-icon.png" />
-      {/* Duplicate for seamless effect */}
+      {/* Duplicate twice for seamless effect */}
       <img src="https://canducci.gallerycdn.vsassets.io/extensions/canducci/create-reactjs-components/1.2.3/1600731009124/Microsoft.VisualStudio.Services.Icons.Default" />
       <img src="https://www.gstatic.com/devrel-devsite/prod/v0aaaacbf0fa1137eef038c28cbf068bb36f5d76d975ff92c1063f1fc9a424af3/firebase/images/touchicon-180.png" />
       <img src="https://www.edureka.co/blog/wp-content/uploads/2019/08/node-logo.png" />

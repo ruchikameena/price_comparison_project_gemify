@@ -64,7 +64,6 @@
 .product-card:hover {
   transform: scale(1.04);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-  /* cursor: pointer; */
 }
 
 .product-image {
@@ -80,9 +79,9 @@
   height: 100px;
   font-weight: 500;
   display: flex;
-  align-items: center;     /* vertical center */
-  justify-content: center; /* horizontal center */
-  text-align: center;      /* multiline ke liye */
+  align-items: center;    
+  justify-content: center;
+  text-align: center;     
   border-top: 1px solid black;
   border-bottom: 1px solid white;
   border-radius: 0 20px 0;
@@ -100,16 +99,9 @@
   font-size: 17px;
 }
 
-/* Different blue tones to identify products from different websites. */
-/* .card-blue1 {
-  background: linear-gradient(145deg, #3b82f6, #2563eb);
-} */
 .card-blue {
   background: linear-gradient(145deg, #84aee2, #1d4ed8);
 }
-/* .card-blue3 {
-  background: linear-gradient(145deg, #384d66, #2563eb);
-} */
 
 .product-tag {
   position: absolute;

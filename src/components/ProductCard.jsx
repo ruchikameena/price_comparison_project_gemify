@@ -1,5 +1,3 @@
-import React from "react";
-
 const ProductCard = ({ product, onCompare }) => {
   return (
     <div className="product-card card-blue">

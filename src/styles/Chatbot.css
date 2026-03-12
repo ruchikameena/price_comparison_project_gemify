@@ -29,7 +29,6 @@
   border-radius: 50%;
 }
 
-/* 💬 Chatbot Window */
 .chatbot-window {
   position: fixed;
   right: 20px;
@@ -67,7 +66,6 @@
   cursor: pointer;
 }
 
-/* 🧠 Chat Body */
 .chatbot-body {
   flex: 1;
   padding: 10px;
@@ -100,7 +98,6 @@
   font-size: 14px;
 }
 
-/* ✏️ Footer (Input + Button) */
 .chatbot-footer {
   display: flex;
   padding: 8px;
@@ -133,7 +130,6 @@
   background: #0056b3;
 }
 
-/* Scrollbar (Optional for better UX) */
 .chatbot-body::-webkit-scrollbar {
   width: 6px;
 }
@@ -142,9 +138,6 @@
   border-radius: 3px;
 }
 
-/* Responsive Styles */
-
-/* Very Small Screens (e.g., older phones) */
 @media (max-width: 360px) {
 
   .chatbot-window {

@@ -103,7 +103,7 @@ const Home = () => {
           ))}
         </div>
       </div>
-          {/* these images will be stored and accessed later from the assets folder in src, to control network dependency. */}
+      
       <div className="categories">
         <h2>Pick Your Perfect Category</h2>
         <div className="category-grid">
