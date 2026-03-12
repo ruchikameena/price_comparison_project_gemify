@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { signInWithEmailAndPassword } from "firebase/auth";
+import { sendPasswordResetEmail } from "firebase/auth";
 import { auth } from "../firebase/config";
 import { useNavigate, Link } from "react-router-dom";
 import "../styles/Auth.css";
@@ -16,12 +17,25 @@ const Login = () => {
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
 
       if (userCredential.user.emailVerified) {
-        navigate("/"); 
+        navigate("/");
       } else {
         alert("Please verify your email before logging in.");
       }
     } catch (err) {
       setError(err.message);
+    }
+  };
+
+  const handleForgotPassword = async () => {
+    if (!email) {
+      alert("Please enter your email first.");
+      return;
+    }
+    try {
+      await sendPasswordResetEmail(auth, email);
+      alert("Password reset email sent!");
+    } catch (error) {
+      alert(error.message);
     }
   };
 
@@ -57,10 +71,8 @@ const Login = () => {
         </div>
 
         <div className="extra-options">
-          <label>
-            <input type="checkbox" /> Remember me
-          </label>
-          <a href="#">Forgot password?</a>
+
+          <a href="#" onClick={handleForgotPassword} style={{ marginLeft: "10px" }}>Forgot your password?</a>
         </div>
 
         <button type="submit" className="btn">LOGIN</button>

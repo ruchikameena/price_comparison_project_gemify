@@ -12,7 +12,7 @@ const Products = () => {
   const location = useLocation();
 
   useEffect(() => {
-    if (location.state?.category) {
+    if (location.state && location.state.category !== undefined) {
       setSearchTerm(location.state.category.toLowerCase());
     }
   }, [location.state]);
@@ -48,17 +48,17 @@ const Products = () => {
         dataSets.forEach(({ source, data }) => {
           const products = Array.isArray(data) ? data : data.products || [];
 
-combined.push(
-  ...products.map((p) => ({
-    id: `${source}-${p.id}`,
-    title: p.title,
-    price: p.price,
-    image: p.image || p.thumbnail || p.images?.[0],
-    category: p.category?.name || p.category,
-    description: p.description,
-    source,
-  }))
-);
+          combined.push(
+            ...products.map((p) => ({
+              id: `${source}-${p.id}`,
+              title: p.title,
+              price: p.price,
+              image: p.image || p.thumbnail || p.images?.[0],
+              category: p.category?.name || p.category,
+              description: p.description,
+              source,
+            }))
+          );
         });
 
         // Remove duplicates products
