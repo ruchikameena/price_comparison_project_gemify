@@ -7,6 +7,7 @@ const Products = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState("");
+  const [compareList, setCompareList] = useState([]);
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -16,7 +17,7 @@ const Products = () => {
       setSearchTerm(location.state.category.toLowerCase());
     }
   }, [location.state]);
-  // this needed to be changed with product API
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -61,7 +62,6 @@ const Products = () => {
           );
         });
 
-        // Remove duplicates products
         const seen = new Set();
         const unique = combined.filter((p) => {
           if (!p.title || seen.has(p.title.toLowerCase()))
@@ -88,8 +88,17 @@ const Products = () => {
   );
 
   const handleCompare = (product) => {
-    navigate("/compare", { state: { query: product.title } });
-  };
+  setCompareList((prev) => {
+    if (prev.some((p) => p.id === product.id)) {
+      return prev; 
+    }
+    return [...prev, { id: product.id, title: product.title }];
+  });
+};
+
+  useEffect(() => {
+    console.log("Compare List:", compareList);
+  }, [compareList]);
 
   return (
     <div className="page-container">

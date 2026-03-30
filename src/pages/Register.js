@@ -9,12 +9,34 @@ const Register = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();
+  const validateForm = () => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/;
+
+    if (!emailRegex.test(email)) {
+      return "Please enter a valid email address";
+    }
+
+    if (!passwordRegex.test(password)) {
+      return "Password must be at least 6 characters and include 1 letter & 1 number";
+    }
+
+    return null;
+  };
 
   const handleRegister = async (e) => {
     e.preventDefault();
+
+    const validationError = validateForm();
+    if (validationError) {
+      setError(validationError);
+      return;
+    }
+
     try {
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
       await sendEmailVerification(userCredential.user);
+
       alert("Verification email sent! Please verify before logging in.");
       navigate("/login");
     } catch (err) {
@@ -43,6 +65,7 @@ const Register = () => {
             required
           />
         </div>
+
         <div className="input-box">
           <input
             type="password"

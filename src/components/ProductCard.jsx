@@ -20,6 +20,11 @@ const ProductCard = ({ product, onCompare }) => {
       >
         Compare
       </button>
+      <button
+        className="compare-btn"
+      >
+        visit
+      </button>
     </div>
   );
 };
