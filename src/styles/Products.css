@@ -45,9 +45,96 @@
   font-size: 18px;
 }
 
+.search-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 600px;
+  gap: 10px;
+}
+
+.search-input {
+  flex: 1;
+  padding: 10px 15px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  outline: none;
+}
+
+.search-btn {
+  padding: 10px 15px;
+  border: none;
+  background: #007bff;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.clear-btn {
+  padding: 10px 12px;
+  border: none;
+  background: #ff4d4d;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* 📱 Mobile responsive */
+@media (max-width: 600px) {
+  .search-box {
+    flex-direction: column;
+  }
+
+  .search-input,
+  .search-btn,
+  .clear-btn {
+    width: 100%;
+  }
+}
+
+.compare-sticky {
+  position: fixed;
+  bottom: 100px;
+  right: 10px; /* left karna ho toh change kar dena */
+  z-index: 1000;
+
+  padding: 12px;
+  background: #28a745;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  font-weight: bold;
+
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.compare-sticky:hover {
+  background: #218838;
+  transform: scale(1.05);
+}
+
+/* 📱 Mobile adjust */
+@media (max-width: 600px) {
+  .compare-sticky {
+    bottom: 100px;
+    right: 15px;
+    padding: 10px 14px;
+    font-size: 14px;
+  }
+}
+
 .product-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
   gap: 18px;
   width: 90%;
   max-width: 1100px;
@@ -74,9 +161,8 @@
 }
 
 .product-name {
-  font-size: 15px;
   color: white;
-  height: 100px;
+  height: 150px;
   font-weight: 500;
   display: flex;
   align-items: center;    
@@ -85,18 +171,21 @@
   border-top: 1px solid black;
   border-bottom: 1px solid white;
   border-radius: 0 20px 0;
-  transition: 0.5s all ease-in-out;
-  
+  transition: 0.5s all ease-in-out;  
 }
 
 .product-name:hover{
   background-color: white;
   color: black;
+  cursor: pointer;
 }
 
 .product-price {
   font-weight: bold;
   font-size: 17px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .card-blue {
@@ -119,6 +208,7 @@
   padding: 10px;
   border: none;
   border-radius: 5px;
+  margin-bottom: 5px;
 }
 
 .compare-btn:hover{
@@ -141,7 +231,4 @@
     height: 120px;
   }
 
-  .product-name {
-    font-size: 14px;
-  }
 }
