@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { sendPasswordResetEmail } from "firebase/auth";
+import ro from "../assets/ro.png";
 import { auth } from "../firebase/config";
 import { useNavigate, Link } from "react-router-dom";
 import "../styles/Auth.css";
@@ -44,10 +45,7 @@ const Login = () => {
       <h1 className="logo">Gemify</h1>
 
       <div className="avatar">
-        <img
-          src="https://cdn-icons-png.flaticon.com/512/9187/9187604.png"
-          alt="user"
-        />
+        <img src={ro} alt="tools" />
       </div>
 
       <form onSubmit={handleLogin}>

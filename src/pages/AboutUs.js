@@ -1,72 +1,81 @@
 import { useEffect } from "react";
 import "../styles/AboutUs.css";
 
+// ✅ IMPORT IMAGES
+import roImg from "../assets/ro.png";
+import ruImg from "../assets/ru.png";
+import riImg from "../assets/ri.png";
+import saImg from "../assets/sa.png";
+
+import reactLogo from "../assets/react_logo.png";
+import firebaseLogo from "../assets/Firebase-icon.png";
+import nodeLogo from "../assets/nodejs.png";
+import flaskLogo from "../assets/flask.webp";
+import chartLogo from "../assets/chartjs.svg";
+
 const team = [
   {
     name: "Rohit Soni",
     role: "Machine Learning Enhancement",
     info: "Created User Intents & Model training for Chatbot to help users in understanding the better website usage",
-    img: "https://www.nicepng.com/png/detail/415-4156423_boy-comments-man-icon-png.png",
+    img: roImg,
   },
   {
     name: "Ruchika Meena",
     role: "Frontend Interface & Analytics",
     info: "UI/UX design & development with responsiveness, display products details and their comparision based on price, chatbot integration & secure user authentication",
-    img: "https://static.thenounproject.com/png/42025-200.png",
+    img: ruImg,
   },
   {
     name: "Riyanshi Goyal",
     role: "Backend Development & Database Management",
     info: "Design Schema & create collections for Products, Store and retrieve data with timestamp, Data fetching",
-    img: "https://static.thenounproject.com/png/42025-200.png",
+    img: riImg,
   },
   {
     name: "Sachin Mishra",
     role: "API developemnt & product matching",
     info: "API creating for GEM,Amazon & Flipkart to retrieve data, product matching using fuzzy logic, handle missing data & manage error responses",
-    img: "https://www.nicepng.com/png/detail/415-4156423_boy-comments-man-icon-png.png",
+    img: saImg,
   },
 ];
 
 const AboutUs = () => {
   useEffect(() => {
-  const counters = document.querySelectorAll(".counter");
+    const counters = document.querySelectorAll(".counter");
 
-  const startCounting = (counter) => {
-    const target = +counter.getAttribute("data-target");
-    let current = 0;
-    const increment = target / 100;
+    const startCounting = (counter) => {
+      const target = +counter.getAttribute("data-target");
+      let current = 0;
+      const increment = target / 100;
 
-    const updateCount = () => {
-      if (current < target) {
-        current += increment;
-        counter.innerText = Math.ceil(current);
-        setTimeout(updateCount, 20);
-      } else {
-        counter.innerText = target + "+";
-      }
+      const updateCount = () => {
+        if (current < target) {
+          current += increment;
+          counter.innerText = Math.ceil(current);
+          setTimeout(updateCount, 20);
+        } else {
+          counter.innerText = target + "+";
+        }
+      };
+
+      updateCount();
     };
 
-    updateCount();
-  };
+    const observer = new IntersectionObserver(
+      (entries, observer) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            startCounting(entry.target);
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.6 }
+    );
 
-  const observer = new IntersectionObserver(
-    (entries, observer) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          const counter = entry.target;
-          startCounting(counter);
-          observer.unobserve(counter); // run only once
-        }
-      });
-    },
-    { threshold: 0.6 } // start when 60% visible
-  );
-
-  counters.forEach((counter) => {
-    observer.observe(counter);
-  });
-}, []);
+    counters.forEach((counter) => observer.observe(counter));
+  }, []);
 
   return (
     <div className="about-container">
@@ -119,54 +128,55 @@ const AboutUs = () => {
       </section>
 
       <section className="about-section stats-section">
-  <h2>Our Impact</h2>
+        <h2>Our Impact</h2>
 
-  <div className="stats-grid">
-    <div className="stat-card">
-      <h3 className="counter" data-target="500">0</h3>
-      <p>Users Compared</p>
-    </div>
+        <div className="stats-grid">
+          <div className="stat-card">
+            <h3 className="counter" data-target="1500">0</h3>
+            <p>Products Compared</p>
+          </div>
 
-    <div className="stat-card">
-      <h3 className="counter" data-target="1000">0</h3>
-      <p>Products Indexed</p>
-    </div>
+          <div className="stat-card">
+            <h3 className="counter" data-target="3000">0</h3>
+            <p>Data Points Analyzed</p>
+          </div>
 
-    <div className="stat-card">
-      <h3 className="counter" data-target="2">0</h3>
-      <p>Platforms Integrated</p>
-    </div>
-  </div>
-</section>
+          <div className="stat-card">
+            <h3 className="counter" data-target="3">0</h3>
+            <p>Platforms Integrated</p>
+          </div>
+        </div>
+      </section>
 
+      {/* ✅ TECH STACK WITH LOCAL IMAGES */}
       <section className="about-section tech-section">
-  <h2>Tech Stack Used</h2>
+        <h2>Tech Stack Used</h2>
 
-  <div className="tech-marquee">
-    <div className="tech-track">
-      <img src="https://canducci.gallerycdn.vsassets.io/extensions/canducci/create-reactjs-components/1.2.3/1600731009124/Microsoft.VisualStudio.Services.Icons.Default" />
-      <img src="https://www.gstatic.com/devrel-devsite/prod/v0aaaacbf0fa1137eef038c28cbf068bb36f5d76d975ff92c1063f1fc9a424af3/firebase/images/touchicon-180.png" />
-      <img src="https://www.edureka.co/blog/wp-content/uploads/2019/08/node-logo.png" />
-      <img src="https://cdn.prod.website-files.com/605c9e03d6553a5d82976ce2/662fff59439091ed0007ab3a_1*doAg1_fMQKWFoub-6gwUiQ.png" />
-      <img src="https://www.chartjs.org/media/logo-title.svg" />
-      <img src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/flask-logo-icon.png" />
-      {/* Duplicate once for seamless effect */}
-      <img src="https://canducci.gallerycdn.vsassets.io/extensions/canducci/create-reactjs-components/1.2.3/1600731009124/Microsoft.VisualStudio.Services.Icons.Default" />
-      <img src="https://www.gstatic.com/devrel-devsite/prod/v0aaaacbf0fa1137eef038c28cbf068bb36f5d76d975ff92c1063f1fc9a424af3/firebase/images/touchicon-180.png" />
-      <img src="https://www.edureka.co/blog/wp-content/uploads/2019/08/node-logo.png" />
-      <img src="https://cdn.prod.website-files.com/605c9e03d6553a5d82976ce2/662fff59439091ed0007ab3a_1*doAg1_fMQKWFoub-6gwUiQ.png" />
-      <img src="https://www.chartjs.org/media/logo-title.svg" />
-      <img src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/flask-logo-icon.png" />
-      {/* Duplicate twice for seamless effect */}
-      <img src="https://canducci.gallerycdn.vsassets.io/extensions/canducci/create-reactjs-components/1.2.3/1600731009124/Microsoft.VisualStudio.Services.Icons.Default" />
-      <img src="https://www.gstatic.com/devrel-devsite/prod/v0aaaacbf0fa1137eef038c28cbf068bb36f5d76d975ff92c1063f1fc9a424af3/firebase/images/touchicon-180.png" />
-      <img src="https://www.edureka.co/blog/wp-content/uploads/2019/08/node-logo.png" />
-      <img src="https://cdn.prod.website-files.com/605c9e03d6553a5d82976ce2/662fff59439091ed0007ab3a_1*doAg1_fMQKWFoub-6gwUiQ.png" />
-      <img src="https://www.chartjs.org/media/logo-title.svg" />
-      <img src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/flask-logo-icon.png" />
-    </div>
-  </div>
-</section>
+        <div className="tech-marquee">
+          <div className="tech-track">
+            <img src={reactLogo} alt="react" />
+            <img src={firebaseLogo} alt="firebase" />
+            <img src={nodeLogo} alt="node" />
+            <img src={flaskLogo} alt="flask" />
+            <img src={chartLogo} alt="chartjs" />
+
+            {/* duplicate for smooth scroll */}
+            <img src={reactLogo} alt="react" />
+            <img src={firebaseLogo} alt="firebase" />
+            <img src={nodeLogo} alt="node" />
+            <img src={flaskLogo} alt="flask" />
+            <img src={chartLogo} alt="chartjs" />
+
+            {/* duplicate for smooth scroll */}
+            <img src={reactLogo} alt="react" />
+            <img src={firebaseLogo} alt="firebase" />
+            <img src={nodeLogo} alt="node" />
+            <img src={flaskLogo} alt="flask" />
+            <img src={chartLogo} alt="chartjs" />
+
+          </div>
+        </div>
+      </section>
     </div>
   );
 };

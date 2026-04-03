@@ -133,13 +133,13 @@
 
 .tech-track {
   display: inline-flex;
-  gap: 60px;
+  gap: 100px;
   animation: scroll 15s linear infinite;
 }
 
 .tech-track img {
-  width: 60px;
-  height: 60px;
+  width: 90px;
+  height: 90px;
   object-fit: contain;
   transition: transform 0.3s ease;
 }

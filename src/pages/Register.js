@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { createUserWithEmailAndPassword, sendEmailVerification } from "firebase/auth";
 import { auth } from "../firebase/config";
+import ro from "../assets/ro.png";
 import { useNavigate, Link } from "react-router-dom";
 import "../styles/Auth.css";
 
@@ -49,10 +50,7 @@ const Register = () => {
       <h1 className="logo">Gemify</h1>
 
       <div className="avatar">
-        <img
-          src="https://cdn-icons-png.flaticon.com/512/9187/9187604.png"
-          alt="user"
-        />
+        <img src={ro} alt="tools" />
       </div>
 
       <form onSubmit={handleRegister}>
